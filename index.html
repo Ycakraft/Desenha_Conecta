@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://github.com/Ycakraft/Desenha_Conecta.git">
+    <title>Girar Carta</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+            text-align: center;
+        }
+        h1{
+         background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 60px;
+        font-weight: bold;
+         font-size: 60px;
+         font-weight: bold;
+         margin-bottom: 10px;
+            
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            color: white;
+        }
+        .start-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            transition: background 0.3s;
+        }
+       
+        .game-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            width: 200px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.5s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            background-color: white;
+            overflow: hidden;
+        }
+        .card img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .card .info {
+            width: 100%;
+            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .game-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .game-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-container">
+        <h1> Desenhe e Conecte</h1> 
+       <p>Monte seu time de 2 a 5 jogadores e embarque nesse desafio criativo! Pegue uma carta, descubra o tema e comece a desenhar. Cada jogador adiciona algo sem saber o que veio antes. No final, a turma escolhe o desenho mais incrível. Solte a imaginação e jogue agora! </p>
+        <button class="start-button" onclick="startGame()">Começar a Jogar</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+        <div class="card" id="card">
+            <img id="card-image" src="carta1.jpg" alt="Carta">
+            <div class="info" id="card-info">Carta 1</div>
+        </div>
+        <button class="game-button" onclick="flipCard()">Girar Carta</button>
+    </div>
+
+    <script>
+        const cards = [
+        { image: 'FLORESTA.JPG', text: 'Paisagem' },
+            { image: 'COMIDA.JPG', text: 'Comida' },
+            { image: 'MITOLOGICA.JPEG', text: 'Criatura Mitologica' },
+            { image: 'PERSONAGEM.JPG', text: 'Personagem' }
+        ];
+
+        function startGame() {
+            document.querySelector('.intro-container').style.display = 'none';
+            document.getElementById('game-container').style.display = 'flex';
+        }
+
+        function flipCard() {
+            const card = document.getElementById('card');
+            const cardImage = document.getElementById('card-image');
+            const cardInfo = document.getElementById('card-info');
+            card.classList.add('flipped');
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * cards.length);
+                cardImage.src = cards[randomIndex].image;
+                cardInfo.textContent = cards[randomIndex].text;
+                card.classList.remove('flipped');
+            }, 500);
+        }
+
+        // Inicializar com uma imagem e texto aleatórios
+        const initialIndex = Math.floor(Math.random() * cards.length);
+        document.getElementById('card-image').src = cards[initialIndex].image;
+        document.getElementById('card-info').textContent = cards[initialIndex].text;
+    </script>
+</body>
+</html>
