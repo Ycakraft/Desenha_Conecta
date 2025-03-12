@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://github.com/Ycakraft/Desenha_Conecta.git">
-    <link rel="stylesheet" href="image/">
+
     <title>Girar Carta</title>
     <style>
         body {
@@ -13,14 +13,13 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: black;
+            background-color: #c58aa5;
             text-align: center;
         }
         h1{
-         background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
+        color: white;
         -webkit-background-clip: text;
         background-clip: text;
-        color: transparent;
         font-size: 60px;
         font-weight: bold;
          font-size: 60px;
@@ -38,8 +37,7 @@
             padding: 15px 30px;
             font-size: 20px;
             cursor: pointer;
-            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
-            color: white;
+            color:#009688;
             border: none;
             border-radius: 15px;
             transition: background 0.3s;
@@ -74,8 +72,8 @@
         }
         .card .info {
             width: 100%;
-            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);;
-            color: white;
+            background: rgb(207, 207, 207);
+            color:#009688;
             text-align: center;
             padding: 10px;
             position: absolute;
@@ -89,15 +87,12 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background: linear-gradient(to right, #ffcc33, #ffa832, #fe8330, #fe5f2f, #fd3a2d);
-            color: white;
+           color: #009688;
             border: none;
             border-radius: 5px;
             transition: background 0.3s;
         }
-        .game-button:hover {
-            background-color: #0056b3;
-        }
+       
     </style>
 </head>
 <body>
@@ -117,10 +112,10 @@
 
     <script>
         const cards = [
-        { image: 'FLORESTA.JPG', text: 'Paisagem' },
-            { image: 'COMIDA.JPG', text: 'Comida' },
-            { image: 'MITOLOGICA.JPEG', text: 'Criatura Mitologica' },
-            { image: 'PERSONAGEM.JPG', text: 'Personagem' }
+        { image: 'arte.png', text: 'ARTE E CULTURA' },
+            { image: 'lazer.png', text: 'LAZER' },
+            { image: 'NATUREZA.png', text: 'NATUREZA' },
+            { image: 'comida.png', text: '  COMIDA' }
         ];
 
         function startGame() {
@@ -138,7 +133,7 @@
                 cardImage.src = cards[randomIndex].image;
                 cardInfo.textContent = cards[randomIndex].text;
                 card.classList.remove('flipped');
-            }, 500);
+            }, 300);
         }
 
         // Inicializar com uma imagem e texto aleatórios
